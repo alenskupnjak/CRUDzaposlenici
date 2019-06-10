@@ -38,3 +38,20 @@ mat-radio-group mat-radio-button {
 .button-row button {
   margin: 5px;
 }
+
+/* notification */
+snack-bar-container.uspjesno {
+  background-color: #5cb85c;
+  color : #fff;
+}
+
+snack-bar-container.warn {
+  background-color: #f99157;
+  color : #fff;
+}
+
+
+snack-bar-container.notification simple-snack-bar{
+  font-size: 18px !important;
+  font-weight: bold;
+}

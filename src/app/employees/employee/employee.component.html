@@ -46,15 +46,6 @@
       </mat-form-field>
 
 
-      <!-- <mat-form-field>
-        <mat-select formControlName="department" placeholder="Department">
-            <mat-options>Nijedan</mat-options>
-          <ng-container *ngFor="let data of odjel">
-             <mat-option value="{{data.id}}">{{data.value}}</mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field> -->
-
       <mat-form-field>
         <input formControlName="hiredate" matInput [matDatepicker]="picker" placeholder="title">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

@@ -1,7 +1,8 @@
 // import { Component, OnInit, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../shared/employee.service';
-import { DepartmentService} from '../../shared/department.service'
+import { DepartmentService} from '../../shared/department.service';
+import { NotificationService } from '../../shared/notification.service';
 
 @Component({
   selector: 'app-employee',
@@ -9,11 +10,6 @@ import { DepartmentService} from '../../shared/department.service'
   styleUrls: ['./employee.component.css']
 })
 
-
-
-// @NgModule({
-//   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
-// })
 
 
 export class EmployeeComponent implements OnInit {
@@ -26,7 +22,8 @@ export class EmployeeComponent implements OnInit {
 
   constructor(
     private service: EmployeeService,
-    private departmentService: DepartmentService) { }
+    private departmentService: DepartmentService,
+    private notification: NotificationService) { }
 
   ngOnInit() {
     this.service.getEmployees();
@@ -37,6 +34,7 @@ export class EmployeeComponent implements OnInit {
   obrisiPodatke() { // briše podatke iz forme
     this.service.form.reset();
     this.service.inicijalizirajFormu();
+    this.notification.uspjesno('Uspješno obrisani podaci');
   }
 
 
@@ -45,6 +43,7 @@ export class EmployeeComponent implements OnInit {
       this.service.insertEmploye(this.service.form.value);
       this.service.form.reset();
       this.service.inicijalizirajFormu();
+      this.notification.uspjesno('Uspješno prijavlje podaci');
     }
 
   }
