@@ -8,3 +8,27 @@
 .fill-remaining-space {
   flex: 1 1 auto;
 }
+
+.normal-form {
+  margin: 10px;
+}
+
+.controles-container{
+  width: 100%;
+  padding: 5%;
+}
+
+
+/*  sve komponente imaju 100% sirinu (> *)             */
+.controles-container > * {
+  width: 100%;
+
+}
+
+.add-bottom-padding {
+  padding: 10px;
+}
+
+mat-radio-group mat-radio-button {
+  margin-left: 10px;
+}
