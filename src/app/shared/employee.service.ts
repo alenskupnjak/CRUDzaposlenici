@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 
 // za feaktivnu fromu moramo uvesti ova dav modula
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
 
-  constructor() { }
+  constructor(private firebase: AngularFireDatabase) { }
+
+  employeeList: AngularFireList<any>;
 
   form: FormGroup = new FormGroup ({
     $key: new FormControl(null),
@@ -21,7 +24,6 @@ export class EmployeeService {
   });
 
 
-
   inicijalizirajFormu() {
     this.form.setValue({
       $key: null,
@@ -34,6 +36,44 @@ export class EmployeeService {
       hiredate: '',
       isPermanent: false
     });
-
   }
+
+  getEmployees() {
+    this.employeeList = this.firebase.list('employees');
+    return this.employeeList.snapshotChanges();
+  }
+
+  insertEmploye(employee) {
+    this.employeeList.push({
+      fullName: employee.fullName,
+      email: employee.email,
+      mobile: employee.mobile,
+      city: employee.city,
+      gender: employee.gender,
+      department: employee.department,
+      hiredate: employee.hiredate,
+      isPermanent: employee.isPermanent
+    });
+  }
+
+  updateEmploye(employee) {
+     this.employeeList.update(employee.$key,
+      {
+      fullName: employee.fullName,
+      email: employee.email,
+      mobile: employee.mobile,
+      city: employee.city,
+      gender: employee.gender,
+      department: employee.department,
+      hiredate: employee.hiredate,
+      isPermanent: employee.isPermanent
+      });
+    }
+
+    deleteEmployee($key: string) {
+      this.employeeList.remove($key);
+    }
+
+
+
 }
