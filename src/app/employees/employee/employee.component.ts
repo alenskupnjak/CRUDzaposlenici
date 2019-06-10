@@ -28,4 +28,9 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
   }
 
+  obrisiPodatke() {
+    this.service.form.reset();
+    this.service.inicijalizirajFormu();
+  }
+
 }

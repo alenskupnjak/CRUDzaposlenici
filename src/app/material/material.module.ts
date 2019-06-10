@@ -11,7 +11,11 @@ import * as Material from '@angular/material';
     Material.MatFormFieldModule,
     Material.MatInputModule,
     Material.MatRadioModule,
-    Material.MatSelectModule
+    Material.MatSelectModule,
+    Material.MatCheckboxModule,
+    Material.MatDatepickerModule,
+    Material.MatNativeDateModule,
+    Material.MatButtonModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -19,7 +23,11 @@ import * as Material from '@angular/material';
     Material.MatFormFieldModule,
     Material.MatInputModule,
     Material.MatRadioModule,
-    Material.MatSelectModule
+    Material.MatSelectModule,
+    Material.MatCheckboxModule,
+    Material.MatDatepickerModule,
+    Material.MatNativeDateModule,
+    Material.MatButtonModule
   ]
 })
 export class MaterialModule { }

@@ -4,13 +4,21 @@
     <div class="controles-container">
       <input type="hidden" formControlName="$key">
       <mat-form-field>
-        <input formControlName="fullName" matInput placeholder="Full Name">
+        <input formControlName="fullName" matInput placeholder="Full Name*">
+        <mat-error>Ovo je polje obavezno</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input formControlName="email" matInput placeholder="Email">
+        <mat-error> Nesipravna email adresa</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input formControlName="mobile" matInput placeholder="Mobile">
+        <input formControlName="mobile" matInput placeholder="Mobile*">
+        <mat-error *ngIf="service.form.controls['mobile'].errors?.required">
+          Ovo je polje obavezno
+        </mat-error>
+        <mat-error *ngIf="service.form.controls['mobile'].errors?.minlength">
+          Minimalno 8 znakova
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input formControlName="city" matInput placeholder="City">
@@ -36,6 +44,23 @@
           </ng-container>
         </mat-select>
       </mat-form-field>
+
+      <mat-form-field>
+        <input formControlName="hiredate" matInput [matDatepicker]="picker" placeholder="title">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="add-bottom-padding">
+        <mat-checkbox formControlName="isPermanent">Stalno zaposlen</mat-checkbox>
+      </div>
+
+      <div class="button-row">
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Potvrdi</button>
+        <button mat-raised-button color="warn" (click)="obrisiPodatke()">Obriši</button>
+      </div>
+
 
      </div>
    </mat-grid-tile>
