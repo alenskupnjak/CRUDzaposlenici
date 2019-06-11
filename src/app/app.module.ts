@@ -12,12 +12,14 @@ import { EmployeeComponent } from './employees/employee/employee.component';
 import { EmployeeService } from './shared/employee.service';
 import { DepartmentService} from './shared/department.service';
 import { environment } from 'src/environments/environment';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeesComponent,
     EmployeeComponent,
+    EmployeeListComponent,
   ],
   imports: [
     BrowserModule,

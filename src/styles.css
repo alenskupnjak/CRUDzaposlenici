@@ -55,3 +55,15 @@ snack-bar-container.notification simple-snack-bar{
   font-size: 18px !important;
   font-weight: bold;
 }
+
+.hide{
+  display: none;
+}
+
+.pokazi{
+  display: false;
+}
+
+mat-footer-row mat-footer-cell{
+  justify-content: center;
+}

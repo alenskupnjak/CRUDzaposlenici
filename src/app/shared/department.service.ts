@@ -12,14 +12,14 @@ export class DepartmentService {
   constructor(private firebase: AngularFireDatabase) {
 
     this.departmentList = this.firebase.list('departments');
-    this.departmentList.snapshotChanges().subscribe(data => {
+    this.departmentList.snapshotChanges().subscribe(
+      data => {
       this.polje = data.map(podatak => {
         return {
           $key: podatak.key,
            ...podatak.payload.val()
         };
       });
-      console.log(data);
     });
   }
 
