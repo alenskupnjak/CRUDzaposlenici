@@ -1,5 +1,5 @@
 <div class="search-div">
-<button mat-raised-button><mat-icon>add</mat-icon>text</button>
+<button mat-raised-button (click)="onCreate()" ><mat-icon>add</mat-icon>text</button>
 <mat-form-field class="search-form-field" floatLabel="never">
     <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off"  (keyup)="applyFilter()">
     <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()" >
@@ -19,21 +19,21 @@
   </ng-container>
   <ng-container matColumnDef="mobile">
     <mat-header-cell *matHeaderCellDef>Mobile</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.mobile }}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="city">
     <mat-header-cell *matHeaderCellDef>City</mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.city}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="departmentName">
-    <mat-header-cell *matHeaderCellDef>Deaprtmentname</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Deaprtmentname</mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.departmentName}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let row">
-      <button mat-icon-button><mat-icon>launch</mat-icon></button>
+      <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
       <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
     </mat-cell>
   </ng-container>

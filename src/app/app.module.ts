@@ -6,6 +6,8 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
+import {DatePipe} from '@angular/common';
+
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeComponent } from './employees/employee/employee.component';
@@ -30,8 +32,9 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule
   ],
-  providers: [EmployeeService, DepartmentService],
+  providers: [EmployeeService, DepartmentService, DatePipe],
   bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  entryComponents: [EmployeeComponent]
 })
 export class AppModule { }

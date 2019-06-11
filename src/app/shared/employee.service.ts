@@ -3,11 +3,15 @@ import { Injectable } from '@angular/core';
 // za feaktivnu fromu moramo uvesti ova dav modula
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { AngularFireDatabase, AngularFireList} from '@angular/fire/database';
+import * as _ from 'lodash';
+import { DatePipe} from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
 
-  constructor(private firebase: AngularFireDatabase) { }
+  constructor(
+    private firebase: AngularFireDatabase,
+    private datePipe: DatePipe) { }
 
   employeeList: AngularFireList<any>;
 
@@ -51,7 +55,7 @@ export class EmployeeService {
       city: employee.city,
       gender: employee.gender,
       department: employee.department,
-      hiredate: employee.hiredate,
+      hiredate: employee.hiredate == "" ? "" : this.datePipe.transform(employee.hiredate, 'yyyy-MM-dd'),
       isPermanent: employee.isPermanent
     });
   }
@@ -72,6 +76,11 @@ export class EmployeeService {
 
     deleteEmployee($key: string) {
       this.employeeList.remove($key);
+    }
+
+    populateForm(row) {
+      this.form.setValue(_.omit(row, 'departmentName'));
+
     }
 
 
