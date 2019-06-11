@@ -15,6 +15,7 @@ import { EmployeeService } from './shared/employee.service';
 import { DepartmentService} from './shared/department.service';
 import { environment } from 'src/environments/environment';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
     EmployeesComponent,
     EmployeeComponent,
     EmployeeListComponent,
+    MatConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,6 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
   providers: [EmployeeService, DepartmentService, DatePipe],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  entryComponents: [EmployeeComponent]
+  entryComponents: [EmployeeComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }
