@@ -1,11 +1,20 @@
+<div class="search-div">
+<button mat-raised-button><mat-icon>add</mat-icon>text</button>
+<mat-form-field class="search-form-field" floatLabel="never">
+    <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off"  (keyup)="applyFilter()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()" >
+      <mat-icon>close</mat-icon></button>
+</mat-form-field>
+</div>
+
 <div class="mat-elavation-z8">
-<mat-table [dataSource]="listData">
+<mat-table [dataSource]="listData" matSort>
   <ng-container matColumnDef="fullName">
-    <mat-header-cell *matHeaderCellDef>Full Name</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.fullName}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef>email</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>email</mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="mobile">
@@ -15,6 +24,10 @@
   <ng-container matColumnDef="city">
     <mat-header-cell *matHeaderCellDef>City</mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.city}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="departmentName">
+    <mat-header-cell *matHeaderCellDef>Deaprtmentname</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.departmentName}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="actions">
@@ -37,5 +50,7 @@
   <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
   <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null &&  listData.data.length==0)}"></mat-footer-row>
 </mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
 
 </div>
