@@ -45,8 +45,8 @@ snack-bar-container.uspjesno {
   color : #fff;
 }
 
-snack-bar-container.warn {
-  background-color: #f99157;
+snack-bar-container.upozorenje {
+  background-color: red;
   color : #fff;
 }
 

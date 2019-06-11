@@ -16,4 +16,9 @@ config: MatSnackBarConfig = {
     this.config['panelClass'] = ['notification', 'uspjesno'];
     this.snackBar.open(msg, '', this.config );
   }
+
+  upozorenje(msg) {
+    this.config['panelClass'] = ['notification', 'upozorenje'];
+    this.snackBar.open(msg, '', this.config );
+  }
 }

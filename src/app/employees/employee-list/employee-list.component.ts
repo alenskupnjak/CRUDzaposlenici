@@ -4,6 +4,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { DepartmentService } from 'src/app/shared/department.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { EmployeeComponent } from '../employee/employee.component';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 
 
@@ -17,7 +18,8 @@ export class EmployeeListComponent implements OnInit {
   constructor(
     private service: EmployeeService,
     private departmentService: DepartmentService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private notoficationService: NotificationService) { }
 
 
   listData: MatTableDataSource<any>;
@@ -69,6 +71,14 @@ export class EmployeeListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
     this.dialog.open(EmployeeComponent, dialogConfig);
+  }
+
+  onDelete($key) {
+    if (confirm('Dal želi obrisati zapis?')) {
+      this.service.deleteEmployee($key);
+      this.notoficationService.upozorenje('! Obrisano uspješno');
+    }
+
   }
 
 }
