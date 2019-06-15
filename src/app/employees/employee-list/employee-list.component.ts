@@ -88,7 +88,7 @@ export class EmployeeListComponent implements OnInit {
 
   obrisiVise() {
     if(this.listaZaBrisanje.length === 0) return;
-    this.dialogService.openConfirmDialog('Želis li obristi više zapisa ?').afterClosed()
+    this.dialogService.openConfirmDialog(`Želis li obristi ${this.listaZaBrisanje.length } zapisa ?`).afterClosed()
     .subscribe(res => {
       console.log(res);
       if (res) {
