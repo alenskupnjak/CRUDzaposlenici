@@ -47,7 +47,7 @@
       <mat-form-field>
         <mat-select formControlName="department" placeholder="Department">
             <!-- <mat-options>daj</mat-options> -->
-          <ng-container *ngFor="let department of departmentService.polje">
+          <ng-container *ngFor="let department of departmentService.zanimanje">
              <mat-option value="{{department.$key}}">{{department.code}}-{{department.name}}</mat-option>
           </ng-container>
         </mat-select>

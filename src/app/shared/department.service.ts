@@ -9,13 +9,13 @@ import * as _ from 'lodash';
 
 export class DepartmentService {
   departmentList: AngularFireList<any>;
-  polje = [];
+  zanimanje = [];
 
   constructor(private firebase: AngularFireDatabase) {
     this.departmentList = this.firebase.list('departments');
     this.departmentList.snapshotChanges().subscribe(
       data => {
-      this.polje = data.map(podatak => {
+      this.zanimanje = data.map(podatak => {
         return {
           $key: podatak.key,
            ...podatak.payload.val()
@@ -29,7 +29,7 @@ export class DepartmentService {
       if ($key == '0') {
         return '';
       } else {
-        return _.find(this.polje, (obj) => { return obj.$key == $key; })['name'];
+        return _.find(this.zanimanje, (obj) => { return obj.$key == $key; })['name'];
       }
     }
 
