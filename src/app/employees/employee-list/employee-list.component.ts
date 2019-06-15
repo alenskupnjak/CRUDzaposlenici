@@ -29,6 +29,7 @@ export class EmployeeListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
+  listaZaBrisanje: any [] = [];
 
   ngOnInit() {
    this.service.getEmployees().subscribe(
@@ -76,11 +77,6 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onDelete($key) {
-    // if (confirm('Dali želi obrisati zapis?')) {
-    //   this.service.deleteEmployee($key);
-    //   this.notoficationService.upozorenje('! Obrisano uspješno');
-    // }
-    
     this.dialogService.openConfirmDialog('Dali želi obrisati zapis?')
     .afterClosed().subscribe(res => {
      if (res) {
@@ -88,8 +84,40 @@ export class EmployeeListComponent implements OnInit {
       this.notoficationService.upozorenje('! Obrisano uspješno');
      }
     });
+  }
+
+  obrisiVise() {
+    if(this.listaZaBrisanje.length === 0) return;
+    this.dialogService.openConfirmDialog('Želis li obristi više zapisa ?').afterClosed()
+    .subscribe(res => {
+      console.log(res);
+      if (res) {
+       this.listaZaBrisanje.forEach( data => {
+         this.service.deleteEmployee(data);
+        });
+     this.listaZaBrisanje = [];
+   }
+   });
+  }
 
 
+  pripremiZaBrisanje($key) {
+
+    let duljinaZapisa = this.listaZaBrisanje.length;
+      let trazim = -1;
+      this.listaZaBrisanje.forEach((data, index) => {
+        console.log ( `index=${index}` );
+        if (data === $key) {
+          trazim = index ;
+          console.log(data, $key);
+          console.log(`Naso ga`);
+        }
+      });
+      if (trazim === -1) this.listaZaBrisanje.push($key)
+      if (trazim !== -1 ) this.listaZaBrisanje.splice(trazim, 1);
+      console.log(`Kraj`);
+      console.log(this.listaZaBrisanje);
+      return this.listaZaBrisanje;
   }
 
 }
