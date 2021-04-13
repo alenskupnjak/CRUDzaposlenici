@@ -2,8 +2,7 @@
   "name": "crudzaposlenici",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "sta": "ng serve -o",
+    "start5005": "ng serve --port 5005 -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

@@ -21,7 +21,7 @@ export class EmployeeComponent implements OnInit {
   ];
 
   constructor(
-    private service: EmployeeService,
+    public service: EmployeeService,
     private departmentService: DepartmentService,
     private notification: NotificationService,
     private dialogRef: MatDialogRef<EmployeeComponent>) { }
